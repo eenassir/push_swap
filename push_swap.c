@@ -6,117 +6,93 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 23:14:21 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/11 00:45:35 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/15 09:11:24 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void sb(int *stack_b, int len)
+void rra(t_list **lst, int len)
 {
-	int i;
-	
-	i = 0;
-	while (i < len)
-		printf ("%d\n", stack_b[i]);
+	t_list *new;
+
+	new = (t_list *)malloc(sizeof (t_list));
+	if (!new)
+		return ;
+	new = lst[0];
+	lst[0] = lst[len - 1];
+	new->next = lst[1];
+	lst[0]->next = new;
+	lst[len - 2]->next = NULL;
+	ft_putstr(1, "rra\n");
 }
 
-void rra(int *stack_a, int len)
+void ra(t_list **lst, int len)
 {
-	int i;
+	t_list *new;
+	
+	new = (t_list *)malloc(sizeof (t_list));
+	if (!new)
+		return ;
+	new = lst[0];
+	lst[0] = lst[0]->next;
+	new->next = NULL;
+	lst[len - 1]->next = new;
+	ft_putstr(1, "ra\n");
+}
+
+void sa(t_list **lst)
+{
 	int c;
 
-	i = 0;
-	while (i < len / 2)
-	{
-		c = stack_a[len - 1 - i];
-		stack_a[len - 1 - i] = stack_a[i];
-		stack_a[i] = c;
-		i++;
-	}
+	c = lst[0]->k;
+	lst[0]->k = lst[1]->k;
+	lst[1]->k = c;
+	ft_putstr(1, "sa\n");
 }
-void pb(int *stack_a, int* stack_b, int len, t_list *sort)
+
+void pa(t_list **lst, t_list **lst1, int len)
 {
 	(void)len;
-	int c;
-	
-	if (sort->index == 0)
-	{
-		printf ("|%d|\n", sort->index);
-		stack_b[sort->index] = stack_a[sort->index];
-		c = stack_b[sort->index];
-		stack_b[sort->index] = stack_b[sort->index + 1];
-		stack_b[sort->index + 1] = c;
-	}
-	sort->index++;
-}
+	t_list *new;
 
-void ra(int *stack_a, int len)
-{
-	int i;
-	int c;
-
-	i = 0;
-	while (i < len / 2)
-	{
-		c = stack_a[i];
-		stack_a[i] = stack_a[len - 1 - i];
-		stack_a[len - 1 - i] = c;
-		i++;
-	}
-}
-
-void sa(int *stack_a, int len)
-{
-	int c;
-	
-	if (len <= 1)
+	new = (t_list *)malloc(sizeof (t_list));
+	if (!new)
 		return ;
-	c = stack_a[1];
-	stack_a[1] = stack_a[0];
-	stack_a[0] = c;
+	new->k = lst1[0]->k;
+	new->next = lst1[0]->next;
+	lst1[0]->next = new;
+	lst1[0]->k = lst[0]->k;
+	lst[0] = lst[0]->next;
+	ft_putstr(1, "pa\n");
+}
+void three(t_list **lst, int len)
+{
+	if (lst[0]->k < lst[1]->k && lst[1]->k < lst[2]->k && lst[0]->k < lst[2]->k)
+		exit(0);
+	else if (lst[0]->k > lst[1]->k && lst[1]->k > lst[2]->k && lst[0]->k > lst[2]->k)
+		(sa(lst), rra(lst, len));
+	else if (lst[0]->k > lst[1]->k && lst[1]->k < lst[2]->k && lst[0]->k < lst[2]->k)
+		sa(lst);
+	else if (lst[0]->k > lst[1]->k && lst[1]->k < lst[2]->k && lst[0]->k > lst[2]->k)
+		ra(lst, len);
+	else if (lst[0]->k < lst[1]->k && lst[1]->k > lst[2]->k && lst[0]->k > lst[2]->k)
+		rra(lst, len);
+	else if (lst[0]->k < lst[1]->k && lst[1]->k > lst[2]->k && lst[0]->k < lst[2]->k)
+		sa(lst), ra(lst, len);
 }
 
-void three(int *tab, int len)
+void swap_el(t_list **lst, t_list **lst1, int len)
 {
-	int i;
-
-	i = 0;
-	if (tab[0] > tab[1] && tab[1] < tab[2] && tab[0] < tab[2])
+	(void)len;
+	(void)lst1;
+	if (len == 3)
+		three  (lst, len);
+	while (lst[0] != NULL)
 	{
-		sa(tab, len);
+		printf ("%d\n", lst[0]->k);
+		lst[0] = lst[0]->next;
 	}
-	while (i < len)
-		printf ("%d\n", tab[i++]);
-}
-
-void swap_el(int *tab, int len)
-{
-	int i;
-	int *stack_b;
-	t_list sort;
-	
-	i = 0;
-	stack_b = (int *)malloc(len);
-	if (!stack_b)
-		return ;
-	stack_b[0] = '\0';
-	stack_b[1] = '\0';
-	stack_b[2] = '\0';
-	stack_b[3] = '\0';
-	stack_b[4] = '\0';
-	stack_b[5] = '\0';
-	sa(tab, len);
-	sort.index = 0;
-	pb(tab, stack_b, len, &sort);
-	pb(tab, stack_b, len, &sort);
-	pb(tab, stack_b, len, &sort);
-	while (i < len)
-	{
-		printf("%d %d\n", tab[i], stack_b[i]);
-		i++;
-	}
-	printf ("- -\na b");
 }
 
 void chekarg(char **av)
@@ -131,7 +107,7 @@ void chekarg(char **av)
 		while (av[i][j])
 		{
 			if (av[i][j] != ' ' && av[i][j] != '-' && av[i][j] != '+' && !(av[i][j] >= '0' && av[i][j] <= '9'))
-				ft_putstr("Error\n"), exit(1);
+				ft_putstr(2, "Error\n"), exit(1);
 			j++;
 		}
 		i++;
@@ -174,11 +150,21 @@ char **collectarg(char **av)
 		{
 			s[cpt++] = av[i][j];
 			if ((av[i][j] == '+' || av[i][j] == '-') && (av[i][j + 1] == ' ' || av[i][j + 1] == '\0'))
-				ft_putstr("Error\n"), exit(1);
+				ft_putstr(2, "Error\n"), exit(1);
 			j++;
 		}
 		if (av[i] != NULL)
 			s[cpt++] = ' ';
+		i++;
+	}
+	i = 0;
+	
+	while (s[i])
+	{
+		if ((s[i] >= '0' && s[i] <= '9') && (s[i + 1] != ' ' && !(s[i + 1] >= '0' && s[i + 1] <= '9')))
+		{
+			ft_putstr(2, "Error\n"), exit(1);
+		}
 		i++;
 	}
 	p = ft_split(s, ' ');
@@ -206,24 +192,26 @@ int ft_count(char **p)
 	return (i);
 }
 
-void duplicate(int *tab, int len)
+void duplicate(t_list **lst, int len)
 {
-	int *tab1;
+	t_list **lst1;
 	int i;
 	int j;
 
+	if (len == 2)
+		exit(1);
 	i = 0;
-	tab1 = tab;
+	lst1 = lst;
 	while (i < len)
 	{
 		j = 0;
 		while (j < len)
 		{
-			if (tab[i] == tab1[j])
+			if (lst[i]->k == lst1[j]->k)
 			{
 				if (i != j)
 				{
-					ft_putstr("Error\n"), exit(1);
+					ft_putstr(2, "Error\n"), exit(1);
 				}
 			}
 			j++;
@@ -232,24 +220,55 @@ void duplicate(int *tab, int len)
 	}
 }
 
-int *sorttab(char **p)
+t_list **sorttab(char **p)
 {
 	int i;
-	int j;
-	int *tab;
+	t_list **lst;
+	t_list **lst1;
 	int l;
 
 	i = 0;
-	j = 0;
 	l = ft_count(p);
-	tab = (int *)malloc((l + 1) * sizeof (int));
-	if (!tab)
+	lst = (t_list **)malloc(l * sizeof (t_list *));
+	if (!lst)
 		return (NULL);
+	lst1 = (t_list **)malloc(l * sizeof (t_list *));
+	if (!lst1)
+		return (NULL);
+	while (i < l)
+	{
+		lst[i] = (t_list *)malloc(sizeof(t_list));
+		if (!lst[i])
+			return (NULL);
+		lst1[i] = (t_list *)malloc(sizeof(t_list));
+		if (!lst1[i])
+			return (NULL);
+		i++;
+	}
+	i = 0;
+	while (i < l)
+	{
+		if (i + 1 < l)
+		{
+			lst[i]->next = lst[i + 1];
+			lst1[i]->next = lst1[i + 1];
+		}
+		else
+		{
+			lst[i]->next = NULL;
+			lst1[i]->next = NULL;
+		}
+		i++;
+	}
+	i = 0;
 	while (p[i])
-		tab[j++] = ft_atoi(p[i++]);
-	duplicate(tab, l);
-	swap_el(tab, l);
-	return (tab);
+	{
+		lst[i]->k = ft_atoi(p[i]);
+		i++;
+	}
+	duplicate(lst, l);
+	swap_el(lst, lst1, l);
+	return (lst);
 }
 
 void f()
@@ -259,15 +278,14 @@ void f()
 
 int main(int ac, char **av)
 {
-	// atexit(f);
 	char **p;
-	int *tab;
+	t_list **lst;
 	
-	if (ac >= 2)
+	if (ac > 1)
 	{
 		chekarg(av);
 		p = collectarg(av);
-		tab = sorttab(p);
-		ft_exit(p);
+		lst = sorttab(p);
+		ft_exit(0);
 	}
 }

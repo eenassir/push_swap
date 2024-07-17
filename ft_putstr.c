@@ -6,14 +6,14 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 20:46:11 by eenassir          #+#    #+#             */
-/*   Updated: 2024/06/28 10:29:03 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/15 08:14:10 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_putstr(char *s)
+void ft_putstr(int i, char *s)
 {
 	while (*s)
-		write (2, &*s++, 1);
+		write (i, &*s++, 1);
 }

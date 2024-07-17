@@ -6,7 +6,7 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 19:28:06 by eenassir          #+#    #+#             */
-/*   Updated: 2024/06/21 23:22:31 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/15 08:47:46 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void ft_exit(char **p)
 	int i;
 
 	i = 0;
+	if (p == NULL)
+		(free (p), exit(1));
 	while (p[i])
 	{
 		free(p[i]);
