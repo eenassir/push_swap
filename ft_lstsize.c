@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 19:28:06 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/20 15:58:37 by eenassir         ###   ########.fr       */
+/*   Created: 2024/07/18 18:40:50 by eenassir          #+#    #+#             */
+/*   Updated: 2024/07/20 20:57:22 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_exit(char **p, t_list *lst)
+int ft_lstsize(t_list *lst)
 {
 	int i;
+	t_list *tmp;
 
 	i = 0;
-	if (p == NULL)
-		(free (p), exit(0));
-	while (p[i])
+	tmp = lst;
+	while (tmp != NULL)
 	{
-		free(p[i]);
 		i++;
+		tmp = tmp->next;
 	}
-	free (p[i]);
-	while (lst)
-	{
-		lst = lst->next;
-		free (lst);
-	}
-	exit(0);
+	return (i);
 }

@@ -1,12 +1,12 @@
 NAME = push_swap
 
-SRC = ft_strlen.c push_swap.c ft_atoi.c ft_split.c ft_exit.c ft_putstr.c
+SRC = ft_strlen.c push_swap.c ft_atoi.c ft_split.c ft_exit.c ft_putstr.c ft_lstsize.c algo.c
 
 OBJ = $(SRC:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = #-fsanitize=address -g
 
 all: $(NAME)
 
