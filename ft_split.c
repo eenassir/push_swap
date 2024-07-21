@@ -6,16 +6,16 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 18:17:27 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/11 21:37:34 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/21 15:45:37 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_count_word(char *s, int c)
+int	ft_count_word(char *s, int c)
 {
-	int i;
-	int cpt;
+	int	i;
+	int	cpt;
 
 	i = 0;
 	cpt = 0;
@@ -28,20 +28,21 @@ int ft_count_word(char *s, int c)
 	return (cpt);
 }
 
-int ft_strlenc(char *s, int c)
+int	ft_strlenc(char *s, int c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i] && s[i] != c)
 		i++;
 	return (i);
 }
-char *ft_substr(char *s, int start, int len)
+
+char	*ft_substr(char *s, int start, int len)
 {
-	int i;
-	char *p;
-	int l;
+	int		i;
+	char	*p;
+	int		l;
 
 	i = 0;
 	l = ft_strlen(s);
@@ -58,7 +59,7 @@ char *ft_substr(char *s, int start, int len)
 	return (p);
 }
 
-char **ft_free(char **p, int j)
+char	**ft_free(char **p, int j)
 {
 	while (j > 0)
 	{
@@ -69,13 +70,13 @@ char **ft_free(char **p, int j)
 	return (NULL);
 }
 
-char **ft_split(char *s, char c)
+char	**ft_split(char *s, char c)
 {
-	int i;
-	int j;
-	char **p;
-	int cpt;
-	int len;
+	int		i;
+	int		j;
+	char	**p;
+	int		cpt;
+	int		len;
 
 	i = 0;
 	j = 0;
@@ -90,7 +91,7 @@ char **ft_split(char *s, char c)
 		p[j] = ft_substr(s, i, len = ft_strlenc(s + i, c));
 		if (!p[j++])
 			return (ft_free(p, j - 1));
-		i += len;	
+		i += len;
 	}
 	p[j] = NULL;
 	return (p);

@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstaddback.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/22 20:46:11 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/21 14:45:15 by eenassir         ###   ########.fr       */
+/*   Created: 2024/07/21 11:55:37 by eenassir          #+#    #+#             */
+/*   Updated: 2024/07/21 14:44:05 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_putstr(int i, char *s)
+void	ft_lstaddback(t_list *lst, t_list *new)
 {
-	while (*s)
-		write (i, &*s++, 1);
+	t_list	*tmp;
+
+	tmp = lst;
+	if (!lst || !new || !tmp)
+		return ;
+	while (lst->next)
+		lst = lst->next;
+	lst->next = new;
+	lst = tmp;
 }

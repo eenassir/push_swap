@@ -6,29 +6,14 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 19:28:06 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/20 15:58:37 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/21 20:01:51 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_exit(char **p, t_list *lst)
+void	ft_exit(char **p)
 {
-	int i;
-
-	i = 0;
-	if (p == NULL)
-		(free (p), exit(0));
-	while (p[i])
-	{
-		free(p[i]);
-		i++;
-	}
-	free (p[i]);
-	while (lst)
-	{
-		lst = lst->next;
-		free (lst);
-	}
-	exit(0);
+	ft_free2(p);
+	// exit(0);
 }

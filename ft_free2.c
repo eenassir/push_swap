@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_free2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/22 20:46:11 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/21 14:45:15 by eenassir         ###   ########.fr       */
+/*   Created: 2024/07/21 16:12:38 by eenassir          #+#    #+#             */
+/*   Updated: 2024/07/21 20:09:34 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_putstr(int i, char *s)
+void	ft_free2(char **p)
 {
-	while (*s)
-		write (i, &*s++, 1);
+	int	i;
+
+	i = 0;
+	while (p[i])
+	{
+		free(p[i]);
+		i++;
+	}
+	free (p[i]);
 }
