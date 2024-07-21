@@ -6,7 +6,7 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 23:09:05 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/21 19:57:05 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/21 23:31:08 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ int		get_max(t_list *lst);
 void	reset_moves(t_move *mv);
 int		get_small_begger_than(t_list *lst_a, int b);
 void	ft_free2(char **p);
-char	*collectarg(char **av);
-void ft_lst_free(t_list **lst_a);
+char	*collectarg(char **av, int ac);
+void	ft_lst_free(t_list **lst_a);
+char	*ft_strjoin(char *s1, char *s2);
+
 
 #endif

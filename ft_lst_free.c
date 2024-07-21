@@ -6,7 +6,7 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 19:52:48 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/21 19:55:50 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/21 23:00:16 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void ft_lst_free(t_list **lst_a)
 {
 	t_list *tmp;
 
-	while (lst_a)
+	while ((*lst_a))
 	{
-		tmp = (*lst_a);
-		(*lst_a) = (*lst_a)->next;
-		free(tmp); 
+		tmp = (*lst_a)->next;
+		free(*lst_a);
+		(*lst_a) = tmp;
 	}
 }

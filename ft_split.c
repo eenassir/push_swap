@@ -6,7 +6,7 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 18:17:27 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/21 15:45:37 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/21 20:26:55 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ char	**ft_free(char **p, int j)
 		j--;
 	}
 	free(p[j]);
+	free(p);
 	return (NULL);
 }
 
