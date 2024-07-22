@@ -6,13 +6,13 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 23:18:13 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/21 23:54:34 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/22 20:12:33 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char *ft_strdup(char *s)
+char	*ft_strdup(char *s)
 {
 	int		i;
 	char	*p;
@@ -30,11 +30,11 @@ char *ft_strdup(char *s)
 	return (p);
 }
 
-char *ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	int i;
-	int j;
-	char *p;
+	int		i;
+	int		j;
+	char	*p;
 
 	i = 0;
 	j = 0;

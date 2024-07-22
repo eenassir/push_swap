@@ -6,7 +6,7 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 23:09:05 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/21 23:31:08 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/22 20:13:48 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct s_move
 int		ft_strlen(char *s);
 int		ft_atoi(char *s);
 char	**ft_split(char *s, char c);
-void	ft_exit(char **p);
 void	ft_putstr(int i, char *s);
 int		ft_lstsize(t_list *lst);
 void	pa(t_list **lst_a, t_list **lst_b);
@@ -52,7 +51,7 @@ void	ft_rest(t_move *best);
 void	ft_lstaddfront(t_list **lst, t_list *new);
 void	ft_lstaddback(t_list *lst, t_list *new);
 t_list	*ft_lstnew(void);
-void	three(t_list *lst);
+void	three(t_list **lst);
 void	four(t_list **lst_a, t_list **lst_b);
 void	five(t_list **lst_a, t_list **lst_b);
 int		sizearg(char **av);
@@ -69,6 +68,5 @@ void	ft_free2(char **p);
 char	*collectarg(char **av, int ac);
 void	ft_lst_free(t_list **lst_a);
 char	*ft_strjoin(char *s1, char *s2);
-
 
 #endif

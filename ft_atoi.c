@@ -6,7 +6,7 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 10:02:26 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/22 10:03:44 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/22 20:10:47 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ int	ft_atoi(char *s)
 		i++;
 	}
 	if (i > 1)
-		(ft_putstr(2, "Error\n"), exit(0));
+		(ft_putstr(2, "Error\n"), exit(1));
 	while (s[i] >= '0' && s[i] <= '9')
 	{
 		result = result * 10 - 48 + s[i++];
 		if ((result < 0 && signe == 1)
 			|| (result * -1 > 0 && signe == -1))
-			(ft_putstr (2, "Error\n"), exit(0));
+			(ft_putstr (2, "Error\n"), exit(1));
 	}
 	return (signe * result);
 }
@@ -55,21 +55,22 @@ void	ft_indexing(t_list *lst)
 	t_list	*tmp2;
 
 	tmp1 = lst;
+	tmp2 = lst;
 	while (tmp1)
 	{
-		tmp1 -> i = 0;
+		tmp1->i = 0;
 		tmp2 = lst;
 		while (tmp2)
 		{
 			if (tmp1->c > tmp2->c)
-				tmp1 -> i += 1;
+				tmp1->i += 1;
 			tmp2 = tmp2 -> next;
 		}
 		tmp1 = tmp1-> next;
 	}
 }
 
-char	*collectarg(char **av,  int ac)
+char	*collectarg(char **av, int ac)
 {
 	int		i;
 	int		j;
@@ -87,7 +88,7 @@ char	*collectarg(char **av,  int ac)
 		{
 			if ((av[i][j] == '+' || av[i][j] == '-')
 				&& (av[i][j + 1] == ' ' || av[i][j + 1] == '\0'))
-				(ft_putstr(2, "Error\n"), free(s));
+				(ft_putstr(2, "Error\n"), free(s), exit(1));
 			j++;
 		}
 		i++;

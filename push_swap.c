@@ -6,7 +6,7 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 23:14:21 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/22 10:15:38 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/22 20:42:43 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ char	**collectarg_util(char **av, int ac)
 	while (s[i])
 	{
 		if ((s[i] >= '0' && s[i] <= '9') && (s[i + 1] != ' '
-			&& !(s[i + 1] >= '0' && s[i + 1] <= '9') && s[i + 1] != '\0'))
-			(ft_putstr(2, "Error\n"));
+				&& !(s[i + 1] >= '0' && s[i + 1] <= '9') && s[i + 1] != '\0'))
+			(ft_putstr(2, "Error\n"), exit(1));
 		i++;
 	}
 	p = ft_split(s, ' ');
@@ -32,7 +32,7 @@ char	**collectarg_util(char **av, int ac)
 	return (p);
 }
 
-void	duplicate(t_list *lst)
+void	duplicate(t_list *lst, char **p)
 {
 	t_list	*tmp1;
 	t_list	*tmp2;
@@ -50,7 +50,8 @@ void	duplicate(t_list *lst)
 			if (tmp1->c == tmp2->c)
 			{
 				if (i != j)
-					(ft_putstr(2, "Error\n"), ft_lst_free(&lst), exit(0));
+					(ft_putstr(2, "Error\n"), ft_free2(p),
+						ft_lst_free(&lst), exit(1));
 			}
 			tmp2 = tmp2->next;
 			j++;
@@ -79,9 +80,8 @@ t_list	*sorttab(char **p)
 		new->i = 0;
 		i++;
 	}
+	duplicate(lst, p);
 	ft_indexing(lst);
-	duplicate(lst);
-	ft_free2(p);
 	return (lst);
 }
 
@@ -99,32 +99,25 @@ void	cheek_sort(t_list *lst_a, char **p)
 		tmp = tmp->next;
 	}
 	if (i == 0)
-		ft_free2(p);
-}
-void f()
-{
-	system ("leaks push_swap");
+		(ft_free2(p), exit(0));
 }
 
 int	main(int ac, char **av)
 {
-	atexit(f);
 	char	**p;
 	t_list	*lst_a;
 	t_list	*lst_b;
-	int		i;
 
-	i = 0;
 	if (ac > 1)
 	{
 		chekarg(av);
 		p = collectarg_util(av, ac);
 		lst_a = sorttab(p);
-		// cheek_sort(lst_a, p);
+		cheek_sort(lst_a, p);
 		if (ft_lstsize(lst_a) == 2 && lst_a->i > lst_a->next->i)
 			sa(lst_a);
 		else if (ft_lstsize(lst_a) == 3)
-			three(lst_a);
+			three(&lst_a);
 		else if (ft_lstsize(lst_a) == 4)
 			four(&lst_a, &lst_b);
 		else if (ft_lstsize(lst_a) == 5)
@@ -132,6 +125,6 @@ int	main(int ac, char **av)
 		else if (ft_lstsize (lst_a) > 5)
 			ft_sort_more_than_five(&lst_a, &lst_b);
 		ft_lst_free(&lst_a);
-		ft_lst_free(&lst_b);
+		ft_free2(p);
 	}
 }

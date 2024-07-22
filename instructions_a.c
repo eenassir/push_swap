@@ -6,7 +6,7 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 10:50:26 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/22 09:02:47 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/22 20:13:34 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	ra(t_list **lst, int print)
 	while (last_node->next)
 		last_node = last_node->next;
 	(*lst) = (*lst)->next;
-	last_node->next = first;
 	first->next = NULL;
+	last_node->next = first;
 	if (print)
 		ft_putstr(1, "ra\n");
 }
@@ -71,6 +71,7 @@ void	rra(t_list **lst, int print)
 {
 	t_list	*second_last;
 	t_list	*last;
+	t_list	*tmp;
 
 	if (!lst || !*lst || !(*lst)->next)
 		return ;
@@ -81,6 +82,8 @@ void	rra(t_list **lst, int print)
 		second_last = last;
 		last = last->next;
 	}
+	tmp = second_last->next;
+	tmp->next = NULL;
 	second_last->next = NULL;
 	last->next = *lst;
 	*lst = last;
