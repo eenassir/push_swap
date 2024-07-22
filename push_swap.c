@@ -6,7 +6,7 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 23:14:21 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/22 00:34:22 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/22 10:15:38 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	**collectarg_util(char **av, int ac)
 	return (p);
 }
 
-void	duplicate(t_list *lst, char **p)
+void	duplicate(t_list *lst)
 {
 	t_list	*tmp1;
 	t_list	*tmp2;
@@ -50,7 +50,7 @@ void	duplicate(t_list *lst, char **p)
 			if (tmp1->c == tmp2->c)
 			{
 				if (i != j)
-					(ft_putstr(2, "Error\n"));
+					(ft_putstr(2, "Error\n"), ft_lst_free(&lst), exit(0));
 			}
 			tmp2 = tmp2->next;
 			j++;
@@ -80,7 +80,8 @@ t_list	*sorttab(char **p)
 		i++;
 	}
 	ft_indexing(lst);
-	duplicate(lst, p);
+	duplicate(lst);
+	ft_free2(p);
 	return (lst);
 }
 
@@ -107,7 +108,7 @@ void f()
 
 int	main(int ac, char **av)
 {
-	// atexit(f);
+	atexit(f);
 	char	**p;
 	t_list	*lst_a;
 	t_list	*lst_b;
@@ -130,7 +131,7 @@ int	main(int ac, char **av)
 			five(&lst_a, &lst_b);
 		else if (ft_lstsize (lst_a) > 5)
 			ft_sort_more_than_five(&lst_a, &lst_b);
-		// ft_lst_free(&lst_a);
-		ft_free2(p);
+		ft_lst_free(&lst_a);
+		ft_lst_free(&lst_b);
 	}
 }

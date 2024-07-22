@@ -6,7 +6,7 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 10:02:26 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/22 00:02:11 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/22 10:03:44 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*collectarg(char **av,  int ac)
 		{
 			if ((av[i][j] == '+' || av[i][j] == '-')
 				&& (av[i][j + 1] == ' ' || av[i][j + 1] == '\0'))
-				(ft_putstr(2, "Error\n"), free(s), exit(0));
+				(ft_putstr(2, "Error\n"), free(s));
 			j++;
 		}
 		i++;

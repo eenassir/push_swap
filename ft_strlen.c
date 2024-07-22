@@ -6,7 +6,7 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 23:13:20 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/21 23:31:54 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/22 10:05:57 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,6 @@ int	ft_strlen(char *s)
 	while (s[i])
 		i++;
 	return (i);
-}
-
-void	chekarg(char **av)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (av[i])
-	{
-		if (ft_strlen(av[i]) == 0)
-			(ft_putstr(2, "Error\n"));
-		j = 0;
-		while (av[i][j])
-		{
-			if (av[i][j] != ' ' && av[i][j] != '-' && av[i][j] != '+'
-				&& !(av[i][j] >= '0' && av[i][j] <= '9'))
-				(ft_putstr(2, "Error\n"));
-			j++;
-		}
-		i++;
-	}
 }
 
 void	cheek_spaces(char **av)
@@ -61,9 +39,32 @@ void	cheek_spaces(char **av)
 				l++;
 		}
 		if (l == ft_strlen(av[i]))
-			(ft_putstr(2, "Error\n"));
+			(ft_putstr(2, "Error\n"), exit(0));
 	}
 }
+void	chekarg(char **av)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	cheek_spaces(av);
+	while (av[i])
+	{
+		if (ft_strlen(av[i]) == 0)
+			(ft_putstr(2, "Error\n"), exit(0));
+		j = 0;
+		while (av[i][j])
+		{
+			if (av[i][j] != ' ' && av[i][j] != '-' && av[i][j] != '+'
+				&& !(av[i][j] >= '0' && av[i][j] <= '9'))
+				(ft_putstr(2, "Error\n"), exit(0));
+			j++;
+		}
+		i++;
+	}
+}
+
 
 int	sizearg(char **av)
 {

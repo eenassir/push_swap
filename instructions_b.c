@@ -6,7 +6,7 @@
 /*   By: eenassir <eenassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 10:55:14 by eenassir          #+#    #+#             */
-/*   Updated: 2024/07/21 13:06:07 by eenassir         ###   ########.fr       */
+/*   Updated: 2024/07/22 09:47:10 by eenassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	pb(t_list **lst_b, t_list **lst_a)
 		return ;
 	node = *lst_a;
 	(*lst_a) = (*lst_a)->next;
+	node->next = NULL;
 	node->next = (*lst_b);
 	(*lst_b) = node;
 	ft_indexing(*lst_a);
