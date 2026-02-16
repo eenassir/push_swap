@@ -12,21 +12,21 @@
 
 #include "push_swap.h"
 
-int	get_min(t_list *lst)
+int	get_min(t_list *list)
 {
 	int	min;
 
-	if (!lst)
+	if (!list)
 		return (0);
-	if (!(lst->next))
-		return (lst->c);
-	min = lst->c;
-	lst = lst->next;
-	while (lst)
+	if (!(list->next))
+		return (list->c);
+	min = list->c;
+	list = list->next;
+	while (list)
 	{
-		if (lst->c < min)
-			min = lst->c;
-		lst = lst->next;
+		if (list->c < min)
+			min = list->c;
+		list = list->next;
 	}
 	return (min);
 }

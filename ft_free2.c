@@ -14,13 +14,13 @@
 
 void	ft_free2(char **p)
 {
-	int	i;
+	int	count;
 
-	i = 0;
-	while (p[i])
+	count = 0;
+	while (p[count])
 	{
-		free(p[i]);
-		i++;
+		free(p[count]);
+		count++;
 	}
 	free(p);
 }

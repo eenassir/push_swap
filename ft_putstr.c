@@ -12,8 +12,8 @@
 
 #include "push_swap.h"
 
-void	ft_putstr(int i, char *s)
+void	ft_putstr(int i, char *str)
 {
-	while (*s)
-		write (i, &*s++, 1);
+	while (*str)
+		write (i, &*str++, 1);
 }

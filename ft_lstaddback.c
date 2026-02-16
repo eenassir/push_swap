@@ -14,13 +14,13 @@
 
 void	ft_lstaddback(t_list *lst, t_list *new)
 {
-	t_list	*tmp;
+	t_list	*tmp_;
 
-	tmp = lst;
-	if (!lst || !new || !tmp)
+	tmp_ = lst;
+	if (!lst || !new || !tmp_)
 		return ;
 	while (lst->next)
 		lst = lst->next;
 	lst->next = new;
-	lst = tmp;
+	lst = tmp_;
 }

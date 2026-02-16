@@ -14,12 +14,12 @@
 
 void	ft_lst_free(t_list **lst_a)
 {
-	t_list	*tmp;
+	t_list	*tmp_;
 
 	while (*lst_a != NULL)
 	{
-		tmp = (*lst_a);
+		tmp_ = (*lst_a);
 		*lst_a = (*lst_a)->next;
-		free(tmp);
+		free(tmp_);
 	}
 }

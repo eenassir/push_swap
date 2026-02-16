@@ -30,12 +30,12 @@ int	ft_count_word(char *s, int c)
 
 int	ft_strlenc(char *s, int c)
 {
-	int	i;
+	int	count;
 
-	i = 0;
-	while (s[i] && s[i] != c)
-		i++;
-	return (i);
+	count = 0;
+	while (s[count] && s[count] != c)
+		count++;
+	return (count);
 }
 
 char	*ft_substr(char *s, int start, int len)

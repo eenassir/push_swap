@@ -80,8 +80,7 @@ t_list	*sorttab(char **p)
 		new->i = 0;
 		i++;
 	}
-	duplicate(lst, p);
-	ft_indexing(lst);
+	(duplicate(lst, p), ft_indexing(lst));
 	return (lst);
 }
 

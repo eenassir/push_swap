@@ -14,12 +14,12 @@
 
 int	ft_strlen(char *s)
 {
-	int	i;
+	int	count;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	count = 0;
+	while (s[count])
+		count++;
+	return (count);
 }
 
 void	cheek_spaces(char **av)

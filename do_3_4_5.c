@@ -33,13 +33,13 @@ void	three(t_list **lst)
 		ra(lst, 1);
 }
 
-void	four(t_list **lst_a, t_list **lst_b)
+void	four(t_list **list_a, t_list **lst_b)
 {
-	while ((*lst_a)->i != 0)
-		rra(lst_a, 1);
-	pb(lst_b, lst_a);
-	three (lst_a);
-	pa(lst_a, lst_b);
+	while ((*list_a)->i != 0)
+		rra(list_a, 1);
+	pb(lst_b, list_a);
+	three (list_a);
+	pa(list_a, lst_b);
 }
 
 void	five(t_list **lst_a, t_list **lst_b)

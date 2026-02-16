@@ -5,7 +5,7 @@ ft_lstaddback.c ft_lstaddfront.c ft_lstnew.c do_3_4_5.c algo_utils.c algo_utils2
 
 OBJ = $(SRC:.c=.o)
 
-CC = gcc -g
+CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 

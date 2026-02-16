@@ -31,26 +31,26 @@ int	calculate_cost(t_move mv)
 	return (ft_max(mv.ra, mv.rb) + ft_max(mv.rra, mv.rrb));
 }
 
-int	ft_get_index_min(t_list *lst)
+int	ft_get_index_min(t_list *list)
 {
 	int	min;
 	int	index_min;
 	int	index_cur;
 
-	if (!lst || !(lst->next))
+	if (!list || !(list->next))
 		return (0);
 	index_min = 0;
 	index_cur = 1;
-	min = lst->c;
-	lst = lst->next;
-	while (lst)
+	min = list->c;
+	list = list->next;
+	while (list)
 	{
-		if (lst->c < min)
+		if (list->c < min)
 		{
-			min = lst->c;
+			min = list->c;
 			index_min = index_cur;
 		}
-		lst = lst->next;
+		list = list->next;
 		index_cur++;
 	}
 	return (index_min);

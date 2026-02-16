@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-void	moves_copy(t_move from, t_move *to)
+void	moves_copy(t_move from, t_move *to_)
 {
-	to->ra = from.ra;
-	to->rra = from.rra;
-	to->rb = from.rb;
-	to->rrb = from.rrb;
+	to_->ra = from.ra;
+	to_->rra = from.rra;
+	to_->rb = from.rb;
+	to_->rrb = from.rrb;
 }
 
 void	calculate_best_moves(t_move *best, t_list *lst_a, t_list *lst_b)

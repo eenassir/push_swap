@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-void	ft_lstaddfront(t_list **lst, t_list *new)
+void	ft_lstaddfront(t_list **list, t_list *new)
 {
-	if (!new || !lst)
+	if (!new || !list)
 		return ;
-	new->next = (*lst);
-	(*lst) = new;
+	new->next = (*list);
+	(*list) = new;
 }
